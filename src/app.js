@@ -8,10 +8,10 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-const createStudentRouter = require('./routes/post/student/createStudent/createStudentRouter')
-app.use('/createStudent', createStudentRouter)
+// Routers
 
-const deleteStudentRouter = require('./routes/post/student/deleteStudent/deleteStudentRouter')
-app.use('/deleteStudent', deleteStudentRouter)
+// Alunos
+const alunoRouter = require('./routes/aluno/alunoRouter')
+app.use('/aluno', alunoRouter)
 
 module.exports = app
