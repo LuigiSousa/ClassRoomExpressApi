@@ -1,10 +1,11 @@
 class Aluno {
 
-    constructor (nome, sobrenome, email, password) {
+    constructor (nome, sobrenome, email, password, idturma) {
         this.nome = nome,
         this.sobrenome = sobrenome,
         this.email = email,
         this.password = password
+        this.idturma = idturma
     }
 
     createdAluno() {
@@ -12,7 +13,7 @@ class Aluno {
     }
 
     checkValue() {
-        if (this.nome == undefined || this.sobrenome == undefined || this.email == undefined || this.password == undefined) {
+        if (this.nome == undefined || this.sobrenome == undefined || this.email == undefined || this.password == undefined || this.idturma == undefined) {
             return false
         }else {
             return true

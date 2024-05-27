@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
 
 // Create Aluno
 router.post('/create', async (req, res) => {
-    const newAluno = new Aluno(req.body.nome, req.body.sobrenome, req.body.email, req.body.password)
+    const newAluno = new Aluno(req.body.nome, req.body.sobrenome, req.body.email, req.body.password, req.body.idturma)
     // Check if any value is undefined
     if (newAluno.checkValue() == false) {
         res.send('Um parametro está faltando')
@@ -38,10 +38,16 @@ router.post('/create', async (req, res) => {
         newAluno.nome, 
         newAluno.sobrenome,
         newAluno.email,
-        newAluno.password
+        newAluno.password,
+        newAluno.idturma
     ]
-    const response = await createAluno('alunos', content)
-    console.log('POST: /aluno/create')
+    try {
+        const response = await createAluno('alunos', content)
+        console.log('POST: /aluno/create')
+    }catch (err) {
+        console.log('POST: /aluno/create')
+        res.send('A turma indicada nao existe')
+    }
 })
 
 // Delete Aluno
