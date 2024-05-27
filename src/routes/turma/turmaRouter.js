@@ -4,6 +4,7 @@ const router = express.Router()
 // Controllers
 const getTurmas = require('../../controls/getControl')
 const createTurma = require('../../controls/createControl')
+const getTurmaById = require('../../controls/getById')
 
 // Class
 const Turma = require('./turmaClass')
@@ -13,6 +14,19 @@ router.get('/', async (req, res) => {
     const turmas = await getTurmas('turmas')
     console.log('GET: /turma')
     res.send(turmas)
+})
+
+// Get turma by ID
+router.get('/:id', async (req, res) => {
+    const id = req.params.id
+    const turma = await getTurmaById("turmas", id)
+    if (turma[0] == undefined) {
+        console.log(`GET: /turma/:${id} (failed)`)
+        res.send('A turma indicada não existe')
+    }else {
+        console.log(`GET: /turma/:${id}`)
+        res.send(turma)
+    }
 })
 
 // Create turma

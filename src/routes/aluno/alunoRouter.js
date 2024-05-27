@@ -21,8 +21,13 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const id = req.params.id
     const aluno = await getAlunoById('alunos', id)
-    console.log(`GET: /aluno/:${id}`)
-    res.send(aluno)
+    if (aluno[0] == undefined) {
+        console.log(`GET: /aluno/:${id} (failed)`)
+        res.send('O aluno indicado não existe')
+    }else {
+        console.log(`GET: /aluno/:${id}`)
+        res.send(aluno)
+    }
 })
 
 // Create Aluno
