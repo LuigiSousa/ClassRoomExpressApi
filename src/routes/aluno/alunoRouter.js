@@ -7,6 +7,9 @@ const getAluno = require('../../controls/getControl')
 const deleteAluno = require('../../controls/deleteControl')
 const getAlunoById = require('../../controls/getById')
 
+// AlunoControllers
+const updateTurma = require('./AlunoControls/updateTurmaControl')
+
 // Class
 const Aluno = require('./alunoClass')
 
@@ -53,6 +56,21 @@ router.post('/create', async (req, res) => {
         console.log('POST: /aluno/create')
         res.send('A turma indicada nao existe')
     }
+})
+
+// Update turma 
+router.put('/update', async (req, res) => {
+    const idAluno = req.body.idAluno
+    const idTurma = req.body.idTurma
+
+    if (idAluno == undefined || idTurma == undefined) {
+        res.send('Um parametro está faltando')
+        console.log('PUT: /aluno/update (failed)')
+        return
+    }
+
+    const response = await updateTurma(idAluno, idTurma)
+    console.log('PUT: /aluno/update')
 })
 
 // Delete Aluno
