@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-// Controls
+// Controllers
 const createAluno = require('../../controls/createControl')
 const getAluno = require('../../controls/getControl')
 const deleteAluno = require('../../controls/deleteControl')

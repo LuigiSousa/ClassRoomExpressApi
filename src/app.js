@@ -14,4 +14,8 @@ app.use(bodyParser.json())
 const alunoRouter = require('./routes/aluno/alunoRouter')
 app.use('/aluno', alunoRouter)
 
+// Turmas
+const turmaRouter = require('./routes/turma/turmaRouter')
+app.use('/turma', turmaRouter)
+
 module.exports = app
